@@ -1,0 +1,37 @@
+<com.madeinhk.ui.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/swipe_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.madeinhk.app.ImageFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:id="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#44000000"
+                android:textColor="@android:color/white"
+                android:layout_gravity="bottom|right"
+                android:padding="5dp"
+                />
+        </FrameLayout>
+    </ScrollView>
+
+</com.madeinhk.ui.SwipeRefreshLayout>
