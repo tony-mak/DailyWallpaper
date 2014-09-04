@@ -107,7 +107,7 @@ public class ImageFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     }
 
     private void fetchImage() {
-        Intent fetchWallpaperIntent = WorkerService.getFetchWallpaperIntent(getActivity());
+        Intent fetchWallpaperIntent = WorkerService.getFetchWallpaperIntent(getActivity(), true);
         getActivity().startService(fetchWallpaperIntent);
     }
 

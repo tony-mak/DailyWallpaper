@@ -26,4 +26,16 @@
         <item>Settings</item>
         <item>About</item>
     </string-array>
+
+
+    <!--  Strings for possible PreferenceActivity Back/Next buttons -->
+    <string name="back_button_label">Back</string>
+    <string name="next_button_label">Next</string>
+
+    <!-- Optional button to Skip a PreferenceActivity [CHAR LIMIT=20] -->
+    <string name="skip_button_label">Skip</string>
+
+    <string name="pref_title">Daily Wallpaper</string>
+    <string name="enable_set_in_background">Set wallpaper automatically</string>
+
 </resources>

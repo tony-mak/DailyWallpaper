@@ -32,8 +32,9 @@ public class MyActivity extends Activity {
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         // Set the adapter for the list view
+        String[] itemList = this.getResources().getStringArray(R.array.navigation_drawer_list);
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, new String[]{"a", "b", "c"}));
+                R.layout.drawer_list_item, itemList));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -87,20 +88,26 @@ public class MyActivity extends Activity {
         }
     }
 
+    private static final int PAGE_TODAY = 0;
+    private static final int PAGE_SETTINGS = 1;
+    private static final int PAGE_ABOUT = 2;
+
     private void selectItem(int pos) {
         switch (pos) {
-            case 0:
+            case PAGE_TODAY:
                 mFragment = new ImageFragment();
                 break;
-            case 1:
+            case PAGE_SETTINGS:
+                mFragment = new SettingsFragment();
                 break;
-            case 2:
+            case PAGE_ABOUT:
+                mFragment = new AboutFragment();
                 break;
             default:
                 throw new IllegalArgumentException("no page " + pos);
         }
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.container, mFragment).commit();
+        fragmentTransaction.replace(R.id.container, mFragment).commit();
         mDrawerList.setItemChecked(pos, true);
     }
 }
