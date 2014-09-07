@@ -37,5 +37,7 @@
 
     <string name="pref_title">Daily Wallpaper</string>
     <string name="enable_set_in_background">Set wallpaper automatically</string>
+    <string name="action_wallpaper">Set Wallpaper</string>
+    <string name="wallpaper_is_set">Wallpaper is set</string>
 
 </resources>

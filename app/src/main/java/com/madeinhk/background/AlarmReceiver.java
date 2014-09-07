@@ -17,7 +17,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         long lastDownloadTime = storage.getLastDownloadTime();
         long fetchWallpaperTime = AlarmHelper.getFetchWallpaperTime();
         if (fetchWallpaperTime > lastDownloadTime) {
-            Intent serviceIntent = WorkerService.getFetchWallpaperIntent(context, false);
+            Intent serviceIntent = WorkerService.getFetchWallpaperIntent(context, true);
             WakefulBroadcastReceiver.startWakefulService(context, serviceIntent);
         }
     }

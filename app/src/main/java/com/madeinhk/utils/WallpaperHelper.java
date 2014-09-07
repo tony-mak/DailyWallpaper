@@ -45,7 +45,6 @@ public class WallpaperHelper {
 
     public Bitmap scaleWallpaper(File wallpaper, int outWidth, int outHeight,
                                  boolean scaleToFit, float horizontalAlignment, float verticalAlignment) throws FileNotFoundException {
-        Resources resources = mContext.getResources();
         horizontalAlignment = Math.max(0, Math.min(1, horizontalAlignment));
         verticalAlignment = Math.max(0, Math.min(1, verticalAlignment));
         InputStream is = new BufferedInputStream(

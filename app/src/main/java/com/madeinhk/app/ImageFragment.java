@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
@@ -25,6 +27,7 @@ import com.madeinhk.background.WorkerService;
 import com.madeinhk.dailywallpaper.R;
 import com.madeinhk.ui.SwipeRefreshLayout;
 import com.madeinhk.utils.KeyValueStorage;
+import com.madeinhk.utils.WallpaperHelper;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +38,7 @@ public class ImageFragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private Uri mWallpaperUri;
+    private Handler mHandler;
 
 
     public ImageFragment() {
@@ -57,6 +61,7 @@ public class ImageFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
         showHowtoUseIfNeeded();
+        mHandler = new Handler();
     }
 
 
@@ -79,7 +84,7 @@ public class ImageFragment extends Fragment implements SwipeRefreshLayout.OnRefr
             final ShowcaseView showcaseView = new ShowcaseView.Builder(getActivity())
                     .setTarget(new ViewTarget(R.id.imageView, getActivity()))
                     .setContentTitle("How to use?")
-                    .setContentText("With no extra effort, your device would update wallpaper from Bing silently in everyday morning")
+                    .setContentText("With no extra effort, your device would update wallpaper from Bing silently in everyday morning. Turn on it in Setting now")
                     .hideOnTouchOutside()
                     .build();
             showcaseView.show();
@@ -107,7 +112,7 @@ public class ImageFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     }
 
     private void fetchImage() {
-        Intent fetchWallpaperIntent = WorkerService.getFetchWallpaperIntent(getActivity(), true);
+        Intent fetchWallpaperIntent = WorkerService.getFetchWallpaperIntent(getActivity(), false);
         getActivity().startService(fetchWallpaperIntent);
     }
 
@@ -152,8 +157,36 @@ public class ImageFragment extends Fragment implements SwipeRefreshLayout.OnRefr
             if (mWallpaperUri != null) {
                 shareWallpaper();
             }
+        } else if (id == R.id.action_wallpaper) {
+            if (mWallpaperUri != null) {
+                setWallpaper();
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setWallpaper() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                WallpaperHelper wallpaperHelper = new WallpaperHelper(getActivity());
+                File wallpaperFile = new File(mWallpaperUri.getPath());
+                try {
+                    wallpaperHelper.setWallpaper(wallpaperFile);
+                    if (mHandler != null) {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getActivity(), R.string.wallpaper_is_set, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {

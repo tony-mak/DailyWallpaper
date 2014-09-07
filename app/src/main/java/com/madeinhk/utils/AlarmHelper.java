@@ -31,11 +31,19 @@ public class AlarmHelper {
         return calendar.getTimeInMillis();
     }
 
+    private PendingIntent getPendingIntent() {
+        Intent broadcastIntent = new Intent(mContext, AlarmReceiver.class);
+        return PendingIntent.getBroadcast(mContext, REQUEST_CODE, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
     public void scheduleFetchWallpaperTask() {
         AlarmManager am = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
         long timeToFetch = getFetchWallpaperTime();
-        Intent broadcastIntent = new Intent(mContext, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext, REQUEST_CODE, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, timeToFetch, DAY_IN_MILLISECOND, pendingIntent);
+        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, timeToFetch, DAY_IN_MILLISECOND, getPendingIntent());
+    }
+
+    public void canelFetchWallpaperTask() {
+        AlarmManager am = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
+        am.cancel(getPendingIntent());
     }
 }

@@ -2,6 +2,9 @@ package com.madeinhk.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import com.madeinhk.app.SettingsFragment;
 
 /**
  * Created by tony on 24/8/14.
@@ -46,5 +49,9 @@ public class KeyValueStorage {
 
     public boolean getFirstRun() {
         return mSharedPrefernces.getBoolean(KEY_FIRST_RUN, true);
+    }
+
+    public boolean getFetchInBackground() {
+        return PreferenceManager.getDefaultSharedPreferences(mContext).getBoolean(SettingsFragment.KEY_ENABLE_SET_WALLPAPER, false);
     }
 }
