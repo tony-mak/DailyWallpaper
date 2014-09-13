@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">每日桌布</string>
+    <string name="action_settings">設定</string>
+    <string name="action_refresh">刷新</string>
+    <string name="action_share">分享</string>
+    <string name="share_wallpaper_to">分享桌布給</string>
+
+
+    <string-array name="navigation_drawer_list">
+        <item>今日桌布</item>
+        <item>設定</item>
+        <item>關於</item>
+    </string-array>
+
+
+    <string name="pref_title">每日桌布</string>
+    <string name="enable_set_in_background">自動更換桌布</string>
+    <string name="action_wallpaper">設定桌布</string>
+    <string name="wallpaper_is_set">已設定桌布</string>
+    <string name="instruction">無需繁覆操作，我們每天會在背後更換桌布。快在設定中開啓此功能吧!</string>
+    <string name="how_to_use">如何使用?</string>
+
+</resources>

@@ -61,6 +61,7 @@ public class WorkerService extends IntentService {
             DownloadHelper downloadHelper = new DownloadHelper(WorkerService.this);
             File wallpaperFile = downloadHelper.startDownload(wallpaperInfo.getUrl(this));
             if (wallpaperFile != null) {
+                downloadHelper.cleanupFile(wallpaperFile.getName());
                 ExifInterface exifInterface = new ExifInterface(wallpaperFile.getAbsolutePath());
                 exifInterface.setAttribute("UserComment", wallpaperInfo.getDescription());
                 exifInterface.saveAttributes();

@@ -39,5 +39,7 @@
     <string name="enable_set_in_background">Set wallpaper automatically</string>
     <string name="action_wallpaper">Set Wallpaper</string>
     <string name="wallpaper_is_set">Wallpaper is set</string>
+    <string name="how_to_use">How to use?</string>
 
+    <string name="instruction">With no extra effort, your device would update wallpaper from Bing silently in everyday morning. Turn on it in Setting now</string>
 </resources>

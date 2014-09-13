@@ -3,7 +3,6 @@ package com.madeinhk.background;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.madeinhk.utils.AlarmHelper;
 import com.madeinhk.utils.KeyValueStorage;

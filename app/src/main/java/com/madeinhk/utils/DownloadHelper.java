@@ -61,4 +61,13 @@ public class DownloadHelper {
         File externalFilesDir = getDownloadDirectory();
         return new File(externalFilesDir, filename);
     }
+
+    public void cleanupFile(String filenameNotToRemove) throws IOException {
+        File downloadDirectory = getDownloadDirectory();
+        for (File file : downloadDirectory.listFiles()) {
+            if (file.isFile() && !file.getName().equals(filenameNotToRemove)) {
+                file.delete();
+            }
+        }
+    }
 }

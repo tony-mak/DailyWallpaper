@@ -83,8 +83,8 @@ public class ImageFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         if (storage.getFirstRun()) {
             final ShowcaseView showcaseView = new ShowcaseView.Builder(getActivity())
                     .setTarget(new ViewTarget(R.id.imageView, getActivity()))
-                    .setContentTitle("How to use?")
-                    .setContentText("With no extra effort, your device would update wallpaper from Bing silently in everyday morning. Turn on it in Setting now")
+                    .setContentTitle(R.string.how_to_use)
+                    .setContentText(R.string.instruction)
                     .hideOnTouchOutside()
                     .build();
             showcaseView.show();
