@@ -6,7 +6,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,8 +40,7 @@ public class MyActivity extends Activity {
 
         // ActionBarDrawerToggle provides convenient helpers for tying together the
         // prescribed interactions between a top-level sliding drawer and the action bar.
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);

@@ -1,4 +1,4 @@
-<com.madeinhk.ui.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:id="@+id/swipe_container"
@@ -34,4 +34,4 @@
         </FrameLayout>
     </ScrollView>
 
-</com.madeinhk.ui.SwipeRefreshLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

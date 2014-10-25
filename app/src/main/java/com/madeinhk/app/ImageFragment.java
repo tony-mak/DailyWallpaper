@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,7 +26,6 @@ import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.madeinhk.background.WorkerService;
 import com.madeinhk.dailywallpaper.R;
-import com.madeinhk.ui.SwipeRefreshLayout;
 import com.madeinhk.utils.KeyValueStorage;
 import com.madeinhk.utils.WallpaperHelper;
 
@@ -52,7 +52,6 @@ public class ImageFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         mTextView = (TextView) rootView.findViewById(R.id.description_text);
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_green_light, android.R.color.holo_red_light, android.R.color.holo_blue_light, android.R.color.holo_orange_light);
         setHasOptionsMenu(true);
         return rootView;
     }
